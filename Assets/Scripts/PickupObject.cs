@@ -10,6 +10,13 @@ public class PickupObject : MonoBehaviour {
     GameObject carriedObject;
     public float distance = 3;
 
+    //Public Materials
+    /*public Material goodCube;
+    public Material goodAlpha;
+    public Material badCube;
+    public Material badAlpha;
+    */
+
 	// Use this for initialization
 	void Start () {
         mainCamera = Camera.main;
@@ -35,6 +42,13 @@ public class PickupObject : MonoBehaviour {
         
         o.transform.position = Vector3.Lerp(o.transform.position, mainCamera.transform.position + mainCamera.transform.forward * distance, Time.deltaTime * 5);
 
+        if (Input.GetMouseButton(0)) {
+            o.transform.Rotate(Vector3.up, Time.deltaTime * 60);
+        } else if (Input.GetMouseButton(1))
+        {
+            o.transform.Rotate(-Vector3.up, Time.deltaTime * 60);
+        }
+
     }
 
     void Pickup() {
@@ -50,6 +64,7 @@ public class PickupObject : MonoBehaviour {
                     carrying = true;
                     carriedObject = p.gameObject;
                     p.GetComponent<Rigidbody>().isKinematic = true;
+                    p.GetComponent<MeshRenderer>().material = p.GetComponent<Pickupable>().alpha;
                 }
             }
         }
@@ -63,6 +78,7 @@ public class PickupObject : MonoBehaviour {
 
     void DropObject() {
         carrying = false;
+        carriedObject.GetComponent<MeshRenderer>().material = carriedObject.GetComponent<Pickupable>().notAlpha;
         carriedObject.GetComponent<Rigidbody>().isKinematic = false;
         carriedObject = null;
         distance = 3.0f;
