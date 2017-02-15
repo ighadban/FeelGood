@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EndingTrigger : MonoBehaviour {
+public class KillTrigger : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -15,9 +15,8 @@ public class EndingTrigger : MonoBehaviour {
 	}
 
     void OnTriggerEnter(Collider other) {
-        if (other.tag == "Player") {
-            Application.Quit();
-            print("you win");
+        if (other.tag == "Cube") {
+            Destroy(other.gameObject);
         }
     }
 }

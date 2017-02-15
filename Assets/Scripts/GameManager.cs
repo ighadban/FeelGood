@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame
@@ -21,5 +20,7 @@ public class GameManager : MonoBehaviour {
         if (currentCubes.Length >= 30) {
             spawnCubes = false;
         }
+
+        currentCubes = GameObject.FindGameObjectsWithTag("Cube");
 	}
 }

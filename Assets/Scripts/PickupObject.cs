@@ -64,6 +64,7 @@ public class PickupObject : MonoBehaviour {
                     p.GetComponent<Collider>().enabled = false;
                     p.GetComponent<MeshRenderer>().material = p.GetComponent<Pickupable>().alpha;
                     p.transform.rotation = Quaternion.identity;
+                    p.GetComponent<Pickupable>().beenPickedUp = true;
                 }
             }
         }

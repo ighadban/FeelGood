@@ -54,7 +54,7 @@ public class SpawnerScript : MonoBehaviour {
     void SpawnCubes() {
 
         if (Time.time > spawnRate) {
-            GameObject spawnedCube = Instantiate(cube, transform.position, transform.rotation) as GameObject;
+            Instantiate(cube, transform.position, transform.rotation);
             //spawnedCube.GetComponent<Pickupable>().cubeTag = spawnTag;
             spawnRate = spawnTime + Time.time;
         }
