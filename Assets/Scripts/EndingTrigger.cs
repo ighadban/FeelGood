@@ -16,8 +16,9 @@ public class EndingTrigger : MonoBehaviour {
 
     void OnTriggerEnter(Collider other) {
         if (other.tag == "Cube") {
-            if (other.GetComponent<Pickupable>().cubeTag == "Good" && other.GetComponent<Pickupable>().rb.velocity.magnitude == 0.0f) {
+            if (other.GetComponent<Pickupable>().cubeTag == "Good" && other.GetComponent<Pickupable>().rb.velocity.magnitude <= 0.3f) {
                 Application.Quit();
+                print("you win");
             }
         }
     }

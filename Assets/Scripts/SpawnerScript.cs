@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnerScript : MonoBehaviour {
 
     //Public Variables
+    GameManager gameManager;
     public float spawnTime;
     private float spawnRate;
     public float moveSpeed;
@@ -19,6 +20,7 @@ public class SpawnerScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PickupObject>();
 	}
 	
@@ -26,7 +28,7 @@ public class SpawnerScript : MonoBehaviour {
 	void Update () {
 
         timer -= Time.deltaTime;
-        if (timer <= 0.0f) {
+        if (timer <= 0.0f && gameManager.spawnCubes) {
             SpawnCubes();
         }
 
