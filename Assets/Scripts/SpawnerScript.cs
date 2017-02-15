@@ -12,6 +12,7 @@ public class SpawnerScript : MonoBehaviour {
     PickupObject player;
     public GameObject[] rallyPoints;
     private int index = 1;
+    public string spawnTag;
 
     public float timer = 15.0f;
 
@@ -51,7 +52,8 @@ public class SpawnerScript : MonoBehaviour {
     void SpawnCubes() {
 
         if (Time.time > spawnRate) {
-            Instantiate(cube, transform.position, transform.rotation);
+            GameObject spawnedCube = Instantiate(cube, transform.position, transform.rotation) as GameObject;
+            //spawnedCube.GetComponent<Pickupable>().cubeTag = spawnTag;
             spawnRate = spawnTime + Time.time;
         }
     }

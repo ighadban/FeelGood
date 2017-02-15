@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114508305122247300}
   m_Layer: 0
   m_Name: BadCube
-  m_TagString: Untagged
+  m_TagString: Cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,3 +123,10 @@ MonoBehaviour:
   alpha: {fileID: 2100000, guid: 75b3a6bc5dcafdf4dbbfec00c4e8625c, type: 2}
   notAlpha: {fileID: 2100000, guid: 9c8b8c20fc5a7b8429ac4afdb8eda2f8, type: 2}
   velocity: 900
+  rb: {fileID: 0}
+  hitSounds:
+  - {fileID: 8300000, guid: dc58361f97c68b540ab80f9d94e4e27c, type: 3}
+  - {fileID: 8300000, guid: ee7a3e274aa06fb4bb448ec84e60c045, type: 3}
+  - {fileID: 8300000, guid: a75bd249f403fc44e958a6497c250b18, type: 3}
+  cubeTag: Bad
+  testvelocity: 0
