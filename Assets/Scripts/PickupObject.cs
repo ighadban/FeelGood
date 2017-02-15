@@ -57,7 +57,7 @@ public class PickupObject : MonoBehaviour {
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
                 Pickupable p = hit.collider.GetComponent<Pickupable>();
-                if (p != null) {
+                if (p != null && !p.GetComponent<Pickupable>().fixedBlock) {
                     carrying = true;
                     carriedObject = p.gameObject;
                     p.GetComponent<Rigidbody>().isKinematic = true;

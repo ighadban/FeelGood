@@ -16,6 +16,7 @@ public class Pickupable : MonoBehaviour {
     public string cubeTag;
 
     public bool beenPickedUp = false;
+    public bool fixedBlock = false;
 
     //Test Variables
     public float testvelocity;
@@ -44,6 +45,8 @@ public class Pickupable : MonoBehaviour {
             col.gameObject.GetComponent<Pickupable>().rb.isKinematic = true;
             meshRenderer.material = buildMaterial;
             col.gameObject.GetComponent<Pickupable>().meshRenderer.material = col.gameObject.GetComponent<Pickupable>().buildMaterial;
+            fixedBlock = true;
+            col.gameObject.GetComponent<Pickupable>().fixedBlock = true;
         }
     }
 }

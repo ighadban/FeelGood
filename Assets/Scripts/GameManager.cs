@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour {
 
     public GameObject[] currentCubes;
     public bool spawnCubes = true;
+    public float maxCubes = 40;
 
 	// Use this for initialization
 	void Start () {
@@ -17,7 +18,7 @@ public class GameManager : MonoBehaviour {
             Application.Quit();
         }
 
-        if (currentCubes.Length >= 30) {
+        if (currentCubes.Length >= maxCubes) {
             spawnCubes = false;
         }
 
