@@ -24,12 +24,10 @@ public class PickupObject : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (carrying)
-        {
+        if (carrying) {
             Carry(carriedObject);
             CheckDrop();
-        } else
-        {
+        } else {
             Pickup();
         }
 
@@ -44,8 +42,7 @@ public class PickupObject : MonoBehaviour {
 
         if (Input.GetMouseButton(0)) {
             o.transform.Rotate(Vector3.up, Time.deltaTime * 60);
-        } else if (Input.GetMouseButton(1))
-        {
+        } else if (Input.GetMouseButton(1)) {
             o.transform.Rotate(-Vector3.up, Time.deltaTime * 60);
         }
 
@@ -64,7 +61,9 @@ public class PickupObject : MonoBehaviour {
                     carrying = true;
                     carriedObject = p.gameObject;
                     p.GetComponent<Rigidbody>().isKinematic = true;
+                    p.GetComponent<Collider>().enabled = false;
                     p.GetComponent<MeshRenderer>().material = p.GetComponent<Pickupable>().alpha;
+                    p.transform.rotation = Quaternion.identity;
                 }
             }
         }
@@ -80,6 +79,7 @@ public class PickupObject : MonoBehaviour {
         carrying = false;
         carriedObject.GetComponent<MeshRenderer>().material = carriedObject.GetComponent<Pickupable>().notAlpha;
         carriedObject.GetComponent<Rigidbody>().isKinematic = false;
+        carriedObject.GetComponent<Collider>().enabled = true;
         carriedObject = null;
         distance = 3.0f;
     }
