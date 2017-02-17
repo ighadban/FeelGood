@@ -14,6 +14,8 @@ public class Pickupable : MonoBehaviour {
     MeshRenderer meshRenderer;
     public AudioClip[] hitSounds;
     public string cubeTag;
+    public float fireRate;
+    public float fireTime = 1.0f;
 
     public bool beenPickedUp = false;
     public bool fixedBlock = false;
@@ -36,8 +38,12 @@ public class Pickupable : MonoBehaviour {
 
     void OnCollisionEnter (Collision col) {
         if (col.gameObject.tag == "Player" || col.gameObject.tag == "Terrain" || col.gameObject.tag == "Cube") {
-            audioManager.PlayAudio(hitSounds[Random.Range(0,hitSounds.Length)]);
-            //print("test");
+            if (Time.time > fireRate) {
+
+                audioManager.PlayAudio(hitSounds[Random.Range(0, hitSounds.Length)]);
+                fireRate = fireTime + Time.time;
+                //print("test");
+            }
         }
 
         if (col.gameObject.tag == "Cube" && beenPickedUp && col.gameObject.GetComponent<Pickupable>().beenPickedUp) {

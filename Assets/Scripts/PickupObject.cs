@@ -9,7 +9,8 @@ public class PickupObject : MonoBehaviour {
     bool carrying;
     GameObject carriedObject;
     public float distance = 3;
-
+    AudioManager audioManager;
+    public AudioClip pickupSound;
     //Public Materials
     /*public Material goodCube;
     public Material goodAlpha;
@@ -20,6 +21,7 @@ public class PickupObject : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         mainCamera = Camera.main;
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
 	}
 	
 	// Update is called once per frame
@@ -65,6 +67,7 @@ public class PickupObject : MonoBehaviour {
                     p.GetComponent<MeshRenderer>().material = p.GetComponent<Pickupable>().alpha;
                     p.transform.rotation = Quaternion.identity;
                     p.GetComponent<Pickupable>().beenPickedUp = true;
+                    audioManager.PlayAudio(pickupSound);
                 }
             }
         }
