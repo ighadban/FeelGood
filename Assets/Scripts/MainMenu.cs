@@ -18,6 +18,7 @@ public class MainMenu : MonoBehaviour {
         MoveCamera(rallyPoints);
 
         Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
 	}
 
     void MoveCamera(GameObject[] points) {

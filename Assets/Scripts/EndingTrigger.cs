@@ -18,7 +18,7 @@ public class EndingTrigger : MonoBehaviour {
 
     void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
-            Application.Quit();
+            //Application.Quit();
             print("you win");
             gameManager.spawnCubes = false;
 
